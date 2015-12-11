@@ -77,5 +77,9 @@ angular.module('products').controller('ProductsController', ['$scope', '$statePa
 				productId: $stateParams.productId
 			});
 		};
+
+		$scope.productSearch = function(product) {
+				$location.path('products/' + product._id);
+		};
 	}
 ]);
