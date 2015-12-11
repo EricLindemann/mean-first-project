@@ -11,12 +11,10 @@ var mongoose = require('mongoose'),
 */
 function validateLength(v){
 	// custom validation function cehcks strength length to be used by model
-	return v.length <= 16;
+	return v.length < 16 && v.length > 2;
 }
 
-function validateNotZero(v){
-	return v.length > 2;
-}
+
 /**
  * Category Schema
  */
@@ -38,7 +36,7 @@ var CategorySchema = new Schema({
 		trim: true,
 		unique: true,
 		required: 'name cannot be blank',
-		validate: ([validateNotZero,'Name must be longer than 2'],[validateLength, 'name must be 16 chars in length or less'])
+		validate: ([validateLength, 'name must be longer than 2 characters and shorter than 16'])
 	}
 
 	// Category model fields

@@ -12,6 +12,43 @@
                     </div>
                 </div>
                 <div class="form-group">
+                    <label class="control-label" for="category">Category</label>
+                    <div class="controls">
+                        <select data-ng-model="category" class="form-control" id="category" ng-options="item._id as item.name for item in categories" placeholder="Category" required></select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="name">Quantity Per Unit</label>
+                    <div class="controls">
+                      <input type="quantityPerUnit" data-ng-model="quantityPerUnit" id="quantityPerUnit" class="form-control" placeholder="Quantity Per Unit"></textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="name">Price Per Unit</label>
+                    <div class="controls">
+                      <input type="unitPrice" data-ng-model="unitPrice" id="unitPrice" class="form-control" placeholder="Price Per Unit"></textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="name">Units In Stock</label>
+                    <div class="controls">
+                      <input type="unitsInStock" data-ng-model="unitsInStock" id="unitsInStock" class="form-control" placeholder="Units In Stock"></textarea>
+                </div>
+                    </div>
+                <div class="form-group">
+                    <label class="control-label" for="name">Units On Order</label>
+                    <div class="controls">
+                      <input type="unitsOnOrder" data-ng-model="unitsOnOrder" id="unitsOnOrder" class="form-control" placeholder="Units On Order"></textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="discontinued">Discontinued</label>
+                    <div class="controls">
+                        <input type="checkbox" data-ng-model="discontinued" id="discontinued" class="form-control" placeholder="discontinued" required>
+                    </div>
+                </div>
+                <p></p>
+                <div class="form-group">
                     <input type="submit" class="btn btn-default">
                 </div>
 				<div data-ng-show="error" class="text-danger">

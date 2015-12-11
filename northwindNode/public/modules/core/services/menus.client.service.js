@@ -10,9 +10,14 @@ angular.module('core').service('Menus', [
 		// Define the menus object
 		this.menus = {};
 
-		// A private function for rendering decision 
+		// A private function for rendering decision
 		var shouldRender = function(user) {
-			if (user) {
+			this.roles.indexOf('*');
+			return true;
+
+
+			//VALIDATES IS USER
+			/*if (user) {
 				if (!!~this.roles.indexOf('*')) {
 					return true;
 				} else {
@@ -28,7 +33,7 @@ angular.module('core').service('Menus', [
 				return this.isPublic;
 			}
 
-			return false;
+			return false;*/
 		};
 
 		// Validate menu existance

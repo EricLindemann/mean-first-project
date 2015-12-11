@@ -1,15 +1,22 @@
 'use strict';
 
 // Products controller
-angular.module('products').controller('ProductsController', ['$scope', '$stateParams', '$location', 'Authentication', 'Products',
-	function($scope, $stateParams, $location, Authentication, Products) {
+angular.module('products').controller('ProductsController', ['$scope', '$stateParams', '$location', 'Authentication', 'Products', 'Categories', '$filter',
+	function($scope, $stateParams, $location, Authentication, Products, Categories, $filter) {
 		$scope.authentication = Authentication;
+		$scope.categories = Categories.query();
 
 		// Create new Product
 		$scope.create = function() {
 			// Create new Product object
 			var product = new Products ({
-				name: this.name
+				name: this.name,
+				category: this.category,
+				quantityPerUnit: this.quantityPerUnit,
+				unitPrice: this.unitPrice,
+				unitsInStock: this.unitsInStock,
+				unitsOnOrder: this.unitsOnOrder,
+				discontinued: this.discontinued
 			});
 
 			// Redirect after save
@@ -25,7 +32,7 @@ angular.module('products').controller('ProductsController', ['$scope', '$statePa
 
 		// Remove existing Product
 		$scope.remove = function(product) {
-			if ( product ) { 
+			if ( product ) {
 				product.$remove();
 
 				for (var i in $scope.products) {
@@ -51,14 +58,22 @@ angular.module('products').controller('ProductsController', ['$scope', '$statePa
 			});
 		};
 
+		var appendCategory = function appendCategory(p) {
+			// You could substitue use of filter here with underscore etc.
+			p.category = $filter('filter')($scope.categories, {_id: p.category})[0];
+		};
+
 		// Find a list of Products
 		$scope.find = function() {
-			$scope.products = Products.query();
+			Products.query(function loadedProducts(products) {
+				products.forEach(appendCategory);
+				$scope.products = products;
+			});
 		};
 
 		// Find existing Product
 		$scope.findOne = function() {
-			$scope.product = Products.get({ 
+			$scope.product = Products.get({
 				productId: $stateParams.productId
 			});
 		};

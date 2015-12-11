@@ -5,12 +5,12 @@ module.exports = function(app) {
 	var users = require('../../app/controllers/users.server.controller');
 	app.route('/categories')
 		.get(categories.list)
-		.post(users.requiresLogin, categories.create);
+		.post(users.requiresLogin,categories.create);
 
 	app.route('/categories/:categoryId')
  		.get(categories.read)
 		.put(users.requiresLogin, categories.update)
-		.delete(users.requiresLogin, categories.delete);
+		.delete(users.requiresLogin,categories.delete);
 
 
 	app.param('categoryId', categories.categoryByID);

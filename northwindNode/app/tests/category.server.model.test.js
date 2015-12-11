@@ -46,7 +46,7 @@ describe('Category Model', function() {
 
             category.save(function(err, saved) {
                 should.exist(err);
-                err.errors.name.message.should.equal('name must be 16 chars in length or less');
+                err.errors.name.message.should.equal('name must be longer than 2 characters and shorter than 16');
                 done();
             });
         });

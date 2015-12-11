@@ -11,6 +11,9 @@
 				<span data-ng-bind="product.user.displayName"></span>
 			</small>
 			<h4 class="list-group-item-heading" data-ng-bind="product.name"></h4>
+      <!--<select data-ng-model="category" class="form-control" id="category" ng-options="item._id as item.name for item in categories" placeholder="Category" required></select>
+-->
+          <span data-ng-bind = "product.category.name" ></span>
         </a>
     </div>
     <div class="alert alert-warning text-center" data-ng-hide="!products.$resolved || products.length">
