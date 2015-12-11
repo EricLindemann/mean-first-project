@@ -2,9 +2,27 @@
 
 	<div class="page-header">
 		<h1 data-ng-bind="product.name"></h1>
+		<!--<p data-ng-bing="product.quantityPerUnit"></p>-->
+		<p>Category: <span data-ng-bind="product.category.name"></span></p>
+		<p>Quantity Per Unit: <span data-ng-bind="product.quantityPerUnit"></span></p>
+		<p>Units On Order: <span data-ng-bind="product.unitsOnOrder"></span></p>
+		<p>Units In Stock: <span data-ng-bind="product.unitsInStock"></span></p>
+		<div ng-switch on="product.discontinued">
+		    <div ng-switch-when="true">
+					<p> This product is discontinued </p>
+						<!-- code to render a large video block-->
+		    </div>
+		    <div ng-switch-default>
+					<p> This product is not discontinued</p>
+		        <!-- code to render the regular video block -->
+		    </div>
+		</div>
+
+
 	</div>
 
-	<div class="pull-right" data-ng-show="((authentication.user) && (authentication.user._id == product.user._id))">
+
+	<div class="pull-right">
 		<a class="btn btn-primary" href="/#!/products/{{product._id}}/edit">
 			<i class="glyphicon glyphicon-edit"></i>
 		</a>

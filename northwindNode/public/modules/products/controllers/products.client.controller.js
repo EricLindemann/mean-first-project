@@ -75,7 +75,7 @@ angular.module('products').controller('ProductsController', ['$scope', '$statePa
 		$scope.findOne = function() {
 			$scope.product = Products.get({
 				productId: $stateParams.productId
-			});
+			}, appendCategory);
 		};
 
 		$scope.productSearch = function(product) {
